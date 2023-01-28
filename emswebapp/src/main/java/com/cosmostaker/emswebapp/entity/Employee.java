@@ -24,6 +24,9 @@ public class Employee {
     @Column(name = "last_name")
     private String lastName;
 
+    @Column(name = "mobile")
+    private String mobile;
+
     @Column(name = "email")
     private String email;
 
@@ -31,16 +34,18 @@ public class Employee {
 
     // Define constructors
     public Employee() {}
-    public Employee(String firstName, String lastName, String email) {
+    public Employee(String firstName, String lastName, String email, String mobile) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.mobile = mobile;
     }
-    public Employee(int id, String firstName, String lastName, String email) {
+    public Employee(int id, String firstName, String lastName, String email, String mobile) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.mobile = mobile;
     }
     
 
@@ -64,6 +69,12 @@ public class Employee {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+    public String getMobile() {
+        return mobile;
+    }
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
     public String getEmail() {
         return email;
     }
@@ -76,6 +87,8 @@ public class Employee {
     // Define toString
     @Override
     public String toString() {
-        return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
+        return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", mobile=" + mobile
+                + ", email=" + email + "]";
     }
+    
 }
