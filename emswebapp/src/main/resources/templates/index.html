@@ -79,7 +79,7 @@
                             </a>
                         
                             <!--Delete button -->
-                            <a th:href="@{/employees/delete(employeeId=${employee.id})}"
+                            <a th:href="@{/deleteEmployee{id}(id=${employee.id})}"
                                 class="btn btn-danger btn-sm"
                                 onclick="if (!(confirm('This employee record will be deleted from the database'))) return false">
                                 Delete

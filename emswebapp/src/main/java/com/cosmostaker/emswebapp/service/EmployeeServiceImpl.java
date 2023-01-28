@@ -43,6 +43,10 @@ public class EmployeeServiceImpl implements IEmployeeService {
         return employee;
     }
 
-    
+
+    @Override
+    public void deleteEmployeeById(int id) {
+        this.employeeRepository.deleteById(id);
+    }
     
 }
