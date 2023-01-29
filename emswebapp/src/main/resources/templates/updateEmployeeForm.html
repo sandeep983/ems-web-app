@@ -2,13 +2,14 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 
-<!-- Head Section -->
 
+<!-- Head Section -->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Update Employee</title>
 
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     
@@ -18,21 +19,33 @@
             background: #cae6f438;
         }
     </style>
-
 </head>
 
 
-<body>
 
+<!-- Body Section -->
+<body>
     <div class="container">
 
-        <h2 class="alert alert-info" style="margin-top: 10px; margin-bottom:0; text-align: center;">Employee Management System</h2>
+        <h2 class="alert alert-info" 
+            style="margin-top: 10px; 
+                    margin-bottom:0; 
+                    text-align: center;">
+            Employee Management System
+        </h2>
 
-        <form class="well form-horizontal" th:action="@{/saveEmployee}" th:object="${employee}" method="POST"
-            id="contact_form">
+        <form class="well form-horizontal" 
+            th:action="@{/saveEmployee}" th:object="${employee}" 
+            method="POST" id="contact_form">
+
             <fieldset>
 
-                <h3 class="alert" style="text-align: center; margin-bottom: 20px;"><b>Update Employee</b></h3>
+                <h3 class="alert" 
+                    style="text-align: center; 
+                            margin-bottom: 20px;">
+                    <b>Update Employee</b>
+                </h3>
+
 
                 <input type="hidden" th:field="*{id}" name="id" >
                 
@@ -50,6 +63,7 @@
                 </div>
                 <!-- <div class="alert alert-warning" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></div> -->
 
+
                 <!-- Last Name -->
                 <div class="form-group">
                     <label class="col-md-4 control-label">Last Name</label>
@@ -62,6 +76,7 @@
                     </div>
                 </div>
 
+
                 <!-- Email -->
                 <div class="form-group">
                     <label class="col-md-4 control-label">E-Mail</label>
@@ -73,6 +88,7 @@
                         </div>
                     </div>
                 </div>
+
 
                 <!-- Mobile -->
                 <div class="form-group">
@@ -87,10 +103,6 @@
                 </div>
 
 
-                <!-- Success message
-                <div class="alert alert-success" role="alert" id="success_message">Success <i
-                        class="glyphicon glyphicon-thumbs-up"></i></div> -->
-
                 <!-- Button -->
                 <div class="form-group">
                     <label class="col-md-4 control-label"></label>
@@ -102,7 +114,10 @@
             </fieldset>
         </form>
 
-        <a class="btn btn-info" style="color: black;" th:href="@{/}">Back to Employees List</a>
+        <a class="btn btn-info" 
+            style="color: black;" th:href="@{/}">
+            Back to Employees List
+        </a>
 
     </div>
 
@@ -162,7 +177,7 @@
                             },
                             phone: {
                                 country: 'IN',
-                                message: 'Please enter a vaild phone number with area code'
+                                message: 'Please enter a vaild phone number'
                             }
                         }
                     }
@@ -188,7 +203,6 @@
                 });
         });
     </script>
-
 </body>
 
 </html>

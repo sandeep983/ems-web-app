@@ -12,13 +12,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.cosmostaker.emswebapp.entity.Employee;
 import com.cosmostaker.emswebapp.service.IEmployeeService;
 
+
 @Controller
 public class EmployeeController {
     
+
     @Autowired
     private IEmployeeService employeeService;
 
 
+    
     // Display list of employees
     @GetMapping("/")
     public String viewHomePage(Model model) {
@@ -27,6 +30,7 @@ public class EmployeeController {
 
         // return findPaginated(1, model);
     }
+
 
 
     // Mapping for add employee form
@@ -40,6 +44,7 @@ public class EmployeeController {
     }
 
 
+
     // Save or Update employee
     @PostMapping("/saveEmployee")
     public String saveEmployee(@ModelAttribute("employee") Employee employee) {
@@ -48,6 +53,7 @@ public class EmployeeController {
 
         return "redirect:/";
     }
+
 
 
     // Mapping for update employee form
@@ -64,6 +70,7 @@ public class EmployeeController {
     }
 
 
+
     // Delete employee
     @GetMapping("/deleteEmployee{id}")
     public String deleteEmployee(@PathVariable(value = "id") int id) {
@@ -72,6 +79,7 @@ public class EmployeeController {
 
         return "redirect:/";
     }
+
 
 
     // Mapping for "search"

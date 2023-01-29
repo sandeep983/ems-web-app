@@ -9,6 +9,7 @@ import com.cosmostaker.emswebapp.entity.Employee;
 
 @Repository
 public interface IEmployeeRepository extends JpaRepository<Employee, Integer>{
+    
     // search by name
 	public List<Employee> findByFirstNameContainsOrLastNameContainsAllIgnoreCase(String name, String lName);
 }

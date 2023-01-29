@@ -5,6 +5,7 @@ import java.util.List;
 import com.cosmostaker.emswebapp.entity.Employee;
 
 public interface IEmployeeService {
+    
     public List<Employee> getAllEmployees();
 
     public void saveEmployee(Employee employee);
