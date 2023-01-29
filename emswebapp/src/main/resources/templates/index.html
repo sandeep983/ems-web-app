@@ -26,13 +26,14 @@
         
 
         <!-- Search form -->
-        <form th:action="@{/employees/search}" class="row">
+        <form th:action="@{/search}" class="row">
             <div class="col-md-6">
                 <a th:href="@{/showAddEmployeeForm}"
                     class="btn btn-primary mr-5 mb-3">
                     Add Employee
                 </a>
             </div>
+
             <div class="col-md-5">
                 <input class="form-control ml-5 mr-sm-2 mb-3" type="search" th:value="${searchedName}"  name="employeeName"  placeholder="Search by name" />
             </div>
@@ -61,7 +62,7 @@
             <tbody>
                 <!-- If employee is null print no record found-->
                 <tr th:if="${listEmployees.size() == 0}">
-                    <td colspan="5" class="text-center" style="color: #dc3545;">No record found</td>
+                    <td colspan="6" class="text-center" style="color: #dc3545;">No record found</td>
                 </tr>
 
                 <!-- If employee is not null print all the records -->

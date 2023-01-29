@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cosmostaker.emswebapp.entity.Employee;
 import com.cosmostaker.emswebapp.service.IEmployeeService;
@@ -22,8 +23,9 @@ public class EmployeeController {
     @GetMapping("/")
     public String viewHomePage(Model model) {
         model.addAttribute("listEmployees", employeeService.getAllEmployees());
-
         return "index";
+
+        // return findPaginated(1, model);
     }
 
 
@@ -70,4 +72,18 @@ public class EmployeeController {
 
         return "redirect:/";
     }
+
+
+    // Mapping for "search"
+    @GetMapping("/search")
+	public String search(@RequestParam("employeeName") String theName, Model theModel) {
+		// add to the spring model
+		theModel.addAttribute("listEmployees", employeeService.searchBy(theName));
+
+        // add searched name to the spring model so we can display it in the search box
+        theModel.addAttribute("searchedName", theName);
+       
+		// send to home page
+		return "index";
+	}
 }

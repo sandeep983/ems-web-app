@@ -49,4 +49,19 @@ public class EmployeeServiceImpl implements IEmployeeService {
         this.employeeRepository.deleteById(id);
     }
     
+
+    @Override
+	public List<Employee> searchBy(String theName) {
+		
+		List<Employee> results = null;
+		
+		if (theName != null && (theName.trim().length() > 0)) {
+			results = employeeRepository.findByFirstNameContainsOrLastNameContainsAllIgnoreCase(theName, theName);
+        }
+		else {
+			results = getAllEmployees();
+		}
+        
+		return results;
+	}
 }
