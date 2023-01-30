@@ -33,7 +33,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
 
     @Override
-    public Employee getEmployeeById(int id) {
+    public Employee getEmployeeById(Long id) {
         Optional<Employee> result = employeeRepository.findById(id);
 
         Employee employee = null;
@@ -49,7 +49,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
 
     @Override
-    public void deleteEmployeeById(int id) {
+    public void deleteEmployeeById(Long id) {
         this.employeeRepository.deleteById(id);
     }
     

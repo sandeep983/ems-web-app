@@ -16,7 +16,7 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Long id;
    
     @Column(name = "first_name")
     private String firstName;
@@ -40,7 +40,7 @@ public class Employee {
         this.email = email;
         this.mobile = mobile;
     }
-    public Employee(int id, String firstName, String lastName, String email, String mobile) {
+    public Employee(Long id, String firstName, String lastName, String email, String mobile) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -51,10 +51,10 @@ public class Employee {
 
 
     // Define getter/setters
-    public int getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public String getFirstName() {

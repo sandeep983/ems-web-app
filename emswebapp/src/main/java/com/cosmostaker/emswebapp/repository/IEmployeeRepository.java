@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.cosmostaker.emswebapp.entity.Employee;
 
 @Repository
-public interface IEmployeeRepository extends JpaRepository<Employee, Integer>{
+public interface IEmployeeRepository extends JpaRepository<Employee, Long>{
     
     // search by name
 	public List<Employee> findByFirstNameContainsOrLastNameContainsAllIgnoreCase(String name, String lName);

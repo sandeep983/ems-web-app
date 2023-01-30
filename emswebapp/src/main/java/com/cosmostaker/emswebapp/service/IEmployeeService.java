@@ -12,9 +12,9 @@ public interface IEmployeeService {
 
     public void saveEmployee(Employee employee);
 
-    public Employee getEmployeeById(int id);
+    public Employee getEmployeeById(Long id);
 
-    public void deleteEmployeeById(int id);
+    public void deleteEmployeeById(Long id);
 
     public List<Employee> searchBy(String theName);
 
