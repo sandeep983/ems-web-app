@@ -60,7 +60,7 @@ public class EmployeeController {
 
 
     // Mapping for update employee form
-    @GetMapping("/showUpdateEmployeeForm{id}")
+    @GetMapping("/updateEmployee{id}")
     public String showUpdateEmployeeForm(@PathVariable(value = "id") Long id, Model model) {
         // get employee from the service
         Employee employee = employeeService.getEmployeeById(id);

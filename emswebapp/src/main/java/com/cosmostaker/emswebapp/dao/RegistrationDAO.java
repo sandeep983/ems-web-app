@@ -1,6 +1,6 @@
 package com.cosmostaker.emswebapp.dao;
 
-public class UserRegistrationDAO {
+public class RegistrationDAO {
     private String firstName;
     private String lastName;
     private String email;
@@ -8,8 +8,8 @@ public class UserRegistrationDAO {
 
 
     // Constructor
-    public UserRegistrationDAO() {}
-    public UserRegistrationDAO(String firstName, String lastName, String email, String password) {
+    public RegistrationDAO() {}
+    public RegistrationDAO(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

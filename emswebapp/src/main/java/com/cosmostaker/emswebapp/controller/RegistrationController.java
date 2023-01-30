@@ -7,30 +7,30 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.cosmostaker.emswebapp.dao.UserRegistrationDAO;
+import com.cosmostaker.emswebapp.dao.RegistrationDAO;
 import com.cosmostaker.emswebapp.service.IUserService;
 
 @Controller
 @RequestMapping("/register")
-public class UserRegistrationController {
+public class RegistrationController {
  
     public IUserService userService;
 
 
-    public UserRegistrationController(IUserService userService) {
+    public RegistrationController(IUserService userService) {
         this.userService = userService;
     }
     
 
     @GetMapping
     public String showRegistrationForm(Model model) {
-        model.addAttribute("user", new UserRegistrationDAO());
+        model.addAttribute("user", new RegistrationDAO());
         return "register";
     }
 
 
     @PostMapping
-    public String registerUser(@ModelAttribute("user") UserRegistrationDAO registrationDAO) {
+    public String registerUser(@ModelAttribute("user") RegistrationDAO registrationDAO) {
         userService.save(registrationDAO);
         return "redirect:/register?success";
     }
