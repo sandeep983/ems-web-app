@@ -106,8 +106,64 @@
                         </td>
                     </div> 
                 </tr>
+
+
+                <!-- Pagination -->
+                <tr th:if="${totalPages > 1}" class="table-dark text-center">
+                    <th colspan="6">
+                        <!-- First button -->
+                        <a style="margin-right:50px" 
+                            th:if="${currentPage > 1}" 
+                            th:href="@{'/page/' + ${1}}">
+                            First
+                        </a>
+                        <span style="margin-right:50px" 
+                            th:unless="${currentPage > 1}">
+                            First
+                        </span>
+
+                        <!-- Previous button -->
+                        <a style="margin-right:50px" 
+                            th:if="${currentPage > 1}" 
+                            th:href="@{'/page/' + ${currentPage - 1}}">
+                            Previous
+                        </a>
+                        <span style="margin-right:50px" 
+                            th:unless="${currentPage > 1}">
+                            Previous
+                        </span>
+
+
+                        <!-- Show total records here -->
+                        Total Records: [[${totalItems}]]
+
+
+                        <!-- Next button -->
+                        <a style="margin-left:50px" 
+                            th:if="${currentPage < totalPages}" 
+                            th:href="@{'/page/' + ${currentPage + 1}}">
+                            Next
+                        </a>
+                        <span style="margin-left:50px" 
+                            th:unless="${currentPage < totalPages}">
+                            Next
+                        </span>
+                    
+                        <!-- Last button -->
+                        <a style="margin-left:50px" 
+                            th:if="${currentPage < totalPages}" 
+                            th:href="@{'/page/' + ${totalPages}}">
+                            Last
+                        </a>
+                        <span style="margin-left:50px" 
+                            th:unless="${currentPage < totalPages}">
+                            Last
+                        </span> 
+                    </th>
+                </tr>
             </tbody>
         </table>
+
 
         
         <!-- Add a logout button -->

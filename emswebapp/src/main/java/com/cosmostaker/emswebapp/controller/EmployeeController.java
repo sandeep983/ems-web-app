@@ -1,6 +1,9 @@
 package com.cosmostaker.emswebapp.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,10 +28,10 @@ public class EmployeeController {
     // Display list of employees
     @GetMapping("/")
     public String viewHomePage(Model model) {
-        model.addAttribute("listEmployees", employeeService.getAllEmployees());
-        return "index";
+        // model.addAttribute("listEmployees", employeeService.getAllEmployees());
+        // return "index";
 
-        // return findPaginated(1, model);
+        return findPaginated(1, model);
     }
 
 
@@ -84,14 +87,32 @@ public class EmployeeController {
 
     // Mapping for "search"
     @GetMapping("/search")
-	public String search(@RequestParam("name") String theName, Model theModel) {
+	public String search(@RequestParam("name") String theName, Model model) {
 		// add to the spring model
-		theModel.addAttribute("listEmployees", employeeService.searchBy(theName));
+		model.addAttribute("listEmployees", employeeService.searchBy(theName));
 
         // add searched name to the spring model so we can display it in the search box
-        theModel.addAttribute("searchedName", theName);
+        model.addAttribute("searchedName", theName);
        
 		// send to home page
-		return "index";
+        return "index";
 	}
+
+
+
+    // Pagination
+    @GetMapping("/page/{pageNo}")
+    public String findPaginated(@PathVariable(value = "pageNo") int pageNo, Model model) {
+        int pageSize = 5;
+
+        Page<Employee> page = employeeService.findPaginated(pageNo, pageSize);
+        List<Employee> listEmployees = page.getContent();
+
+        model.addAttribute("currentPage", pageNo);
+        model.addAttribute("totalPages", page.getTotalPages());
+        model.addAttribute("totalItems", page.getTotalElements());
+        model.addAttribute("listEmployees", listEmployees);
+
+        return "index";
+    }
 }

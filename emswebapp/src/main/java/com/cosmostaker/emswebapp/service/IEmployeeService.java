@@ -2,6 +2,8 @@ package com.cosmostaker.emswebapp.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+
 import com.cosmostaker.emswebapp.entity.Employee;
 
 public interface IEmployeeService {
@@ -15,5 +17,7 @@ public interface IEmployeeService {
     public void deleteEmployeeById(int id);
 
     public List<Employee> searchBy(String theName);
+
+    public Page<Employee> findPaginated(int pageNo, int pageSize);
 
 }

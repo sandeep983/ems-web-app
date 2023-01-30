@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.cosmostaker.emswebapp.entity.Employee;
@@ -53,7 +56,6 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
     @Override
 	public List<Employee> searchBy(String theName) {
-		
 		List<Employee> results = null;
 		
 		if (theName != null && (theName.trim().length() > 0)) {
@@ -65,4 +67,11 @@ public class EmployeeServiceImpl implements IEmployeeService {
         
 		return results;
 	}
+
+
+    @Override
+    public Page<Employee> findPaginated(int pageNo, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNo-1, pageSize);
+        return this.employeeRepository.findAll(pageable);
+    }
 }
