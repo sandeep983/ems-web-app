@@ -21,14 +21,14 @@ import com.cosmostaker.emswebapp.service.IUserService;
 public class SecurityConfig {
 
 
-    // @Autowired
-    // private IUserService userService;
+    @Autowired
+    private IUserService userService;
 
     
-    // @Bean
-    // public BCryptPasswordEncoder passwordEncoder() {
-    //     return new BCryptPasswordEncoder();
-    // }
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
 
     // @Bean
@@ -47,13 +47,13 @@ public class SecurityConfig {
 
         UserDetails cosmostaker = User.builder()
             .username("Cosmostaker")
-            .password("{noop}cosmos@123")
+            .password(passwordEncoder().encode("cosmos@123"))
             .roles("EMPLOYEE")
             .build();
 
         UserDetails admin = User.builder()
 			.username("Admin")
-			.password("{noop}admin@123")
+			.password(passwordEncoder().encode("admin@123"))
 			.roles("EMPLOYEE", "ADMIN")
 			.build();
         
@@ -104,6 +104,6 @@ public class SecurityConfig {
 				.accessDeniedPage("/accessDenied"))
 				
 		
-		.build();        
+		.build();
     }	
 }
