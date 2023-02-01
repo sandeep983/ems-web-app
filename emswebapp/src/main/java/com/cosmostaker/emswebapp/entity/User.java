@@ -50,12 +50,6 @@ public class User {
 
 	// Constructor
 	public User() {}
-	public User(String firstName, String lastName, String email, String password) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.password = password;
-	}
     public User(String firstName, String lastName, String email, String password, Collection<Role> roles) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -102,11 +96,4 @@ public class User {
 	public void setRoles(Collection<Role> roles) {
 		this.roles = roles;
 	}
-
-
-	// toString()
-    @Override
-    public String toString() {
-        return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", password=" + password + ", roles=" + roles + "]";
-    }
 }

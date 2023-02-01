@@ -1,6 +1,7 @@
-package com.cosmostaker.emswebapp.dao;
+package com.cosmostaker.emswebapp.dto;
 
-public class RegistrationDAO {
+public class RegistrationDTO {
+    
     private String firstName;
     private String lastName;
     private String email;
@@ -8,14 +9,8 @@ public class RegistrationDAO {
 
 
     // Constructor
-    public RegistrationDAO() {}
-    public RegistrationDAO(String firstName, String lastName, String email, String password) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
-    }
-
+    public RegistrationDTO() {}
+ 
 
     // Getters and Setters
     public String getFirstName() {

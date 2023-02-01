@@ -24,6 +24,7 @@ public class Role {
     // Constructor
 	public Role() {}
 	public Role(String name) {
+		super();
 		this.name = name;
 	}
 
@@ -40,12 +41,5 @@ public class Role {
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-
-
-    // toString()
-	@Override
-	public String toString() {
-		return "Role{" + "id=" + id + ", name='" + name + '\'' + '}';
 	}
 }
