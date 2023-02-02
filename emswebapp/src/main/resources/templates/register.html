@@ -45,7 +45,8 @@
                 <div th:if="${param.success}">
                     <div style="text-align: center; margin-top: 15px;"
                         class="alert-success">
-                        <b>User registered successfully.</b>
+                        <b>User registered successfully.&nbsp;&nbsp;
+                        <a th:href="@{/login}">Click here to Login</a></b>
                     </div>
                 </div>
 
@@ -65,10 +66,12 @@
                             <input th:field="*{firstName}" name="firstName" placeholder="First Name"
                                 class="form-control" type="text">
                         </div>
+                        <div class="alert alert-danger" 
+                            style="padding: 2px;"
+                            th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">
+                        </div>
                     </div>
                 </div>
-                <!-- <div class="alert alert-warning" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></div> -->
-
 
                 <!-- Last Name -->
                 <div class="form-group">
@@ -78,6 +81,10 @@
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                             <input th:field="*{lastName}"  placeholder="Last Name" class="form-control"
                                 type="text">
+                        </div>
+                        <div class="alert alert-danger" 
+                            style="padding: 2px;"
+                            th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">
                         </div>
                     </div>
                 </div>
@@ -92,6 +99,10 @@
                             <input th:field="*{email}" name="email" placeholder="E-Mail Address" class="form-control"
                                 type="text">
                         </div>
+                        <div class="alert alert-danger" 
+                            style="padding: 2px;"
+                            th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+                        </div>
                     </div>
                 </div>
 
@@ -105,6 +116,10 @@
                             <input th:field="*{password}" name="password" placeholder="Password" class="form-control"
                                 type="password">
                         </div>
+                        <div class="alert alert-danger" 
+                            style="padding: 2px;"
+                            th:if="${#fields.hasErrors('password')}" th:errors="*{password}">
+                        </div>
                     </div>
                 </div>
 
@@ -117,18 +132,10 @@
                     </div>
                 </div>
 
-
-                <!-- Login button -->
-                <!-- <div class="form-group">
-                    <button type="submit" class="btn btn-success">Register</button>
-                    <span>Already registered? <a href="/" th:href="@{/login}">Login
-                            here</a></span>
-                </div> -->
-
             </fieldset>
         </form>
 
-        <a class="btn btn-info" style="color: black;" th:href="@{/}">Back to Employees List</a>
+        <a class="btn btn-info" style="color: black;" th:href="@{/}">Back to Home Page</a>
 
     </div>
 
@@ -156,7 +163,7 @@
                     firstName: {
                         validators: {
                             stringLength: {
-                                min: 2,
+                                min: 3,
                             },
                             notEmpty: {
                                 message: 'Field can not be empty'
@@ -166,7 +173,7 @@
                     lastName: {
                         validators: {
                             stringLength: {
-                                min: 2,
+                                min: 3,
                             },
                             notEmpty: {
                                 message: 'Field can not be empty'
@@ -185,6 +192,10 @@
                     },
                     password: {
                         validators: {
+                            stringLength: {
+                                min: 8,
+                                message: 'Password must be at least 8 characters long'
+                            },
                             notEmpty: {
                                 message: 'Field can not be empty'
                             }

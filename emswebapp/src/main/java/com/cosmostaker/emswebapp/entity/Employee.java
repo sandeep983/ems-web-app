@@ -6,6 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 
 @Entity
@@ -18,15 +21,25 @@ public class Employee {
     @Column(name = "id")
     private Long id;
    
+
+    @NotBlank(message = "{NotBlank.Msg}")
+    @Size(min=3, message = "{Size.Min}")
     @Column(name = "first_name")
     private String firstName;
 
+
+    @NotBlank(message = "{NotBlank.Msg}")
+    @Size(min=3, message = "{Size.Min}")
     @Column(name = "last_name")
     private String lastName;
 
+
+    @Pattern(regexp = "^[0-9]{10}$", message = "{Mobile.Msg}")
     @Column(name = "mobile")
     private String mobile;
 
+
+    @Pattern(regexp = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$", message = "{Email.Msg}")
     @Column(name = "email")
     private String email;
 

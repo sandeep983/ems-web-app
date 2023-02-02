@@ -2,10 +2,13 @@ package com.cosmostaker.emswebapp.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -50,7 +53,12 @@ public class EmployeeController {
 
     // Save or Update employee
     @PostMapping("/saveEmployee")
-    public String saveEmployee(@ModelAttribute("employee") Employee employee) {
+    public String saveEmployee(@Valid @ModelAttribute("employee") Employee employee, BindingResult result) {
+        // If has errors, return to the form
+        if(result.hasErrors()) {
+            return "addEmployeeForm";
+        }
+
         // save employee to database
         employeeService.saveEmployee(employee);
 
@@ -98,7 +106,7 @@ public class EmployeeController {
         return "index";
 	}
 
-
+    
 
     // Pagination
     @GetMapping("/page/{pageNo}")

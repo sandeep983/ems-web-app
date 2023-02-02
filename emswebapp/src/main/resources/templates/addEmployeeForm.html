@@ -57,9 +57,13 @@
                             <input th:field="*{firstName}" name="firstName" placeholder="First Name"
                                 class="form-control" type="text">
                         </div>
+                        <div class="alert alert-danger" 
+                            style="padding: 2px;"
+                            th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">
+                        </div>
                     </div>
                 </div>
-                <!-- <div class="alert alert-warning" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></div> -->
+                
 
 
                 <!-- Last Name -->
@@ -70,6 +74,10 @@
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                             <input th:field="*{lastName}"  placeholder="Last Name" class="form-control"
                                 type="text">
+                        </div>
+                        <div class="alert alert-danger" 
+                            style="padding: 2px;"
+                            th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">
                         </div>
                     </div>
                 </div>
@@ -84,6 +92,10 @@
                             <input th:field="*{email}" name="email" placeholder="E-Mail Address" class="form-control"
                                 type="text">
                         </div>
+                        <div class="alert alert-danger" 
+                            style="padding: 2px;"
+                            th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+                        </div>
                     </div>
                 </div>
 
@@ -96,6 +108,10 @@
                             <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
                             <input th:field="*{mobile}" name="phone" placeholder="9876543210" class="form-control"
                                 type="text">
+                        </div>
+                        <div class="alert alert-danger" 
+                            style="padding: 2px;"
+                            th:if="${#fields.hasErrors('mobile')}" th:errors="*{mobile}">
                         </div>
                     </div>
                 </div>
@@ -144,7 +160,7 @@
                     firstName: {
                         validators: {
                             stringLength: {
-                                min: 2,
+                                min: 3,
                             },
                             notEmpty: {
                                 message: 'Field can not be empty'
@@ -154,7 +170,7 @@
                     lastName: {
                         validators: {
                             stringLength: {
-                                min: 2,
+                                min: 3,
                             },
                             notEmpty: {
                                 message: 'Field can not be empty'
